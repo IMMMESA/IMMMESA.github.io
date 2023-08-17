@@ -150,7 +150,7 @@ li {
 
 @media screen and (max-width: 1200px) {
     header h1{
-        font-size: 45px;
+        font-size: 35px;
     }
 
     .hero {
@@ -167,7 +167,7 @@ li {
     }
 
     .box-txt h2 {
-        font-size: 55px;
+        font-size: 30px;
     }
 
     .box-txt p {
@@ -178,6 +178,10 @@ li {
     .box-img {
         width: 100%;
         margin-bottom: 40px;
+    }
+
+    .responsiva {
+        max-width: 100%;
     }
     
     .box-item { 

@@ -17,6 +17,7 @@ header {
     align-items: center;
     background: red;
     height: 80px;
+   
 }
 
 header h1 {
@@ -149,8 +150,14 @@ li {
 /* Codigo para rederizar a pagina */
 
 @media screen and (max-width: 760px) {
+    header {
+        width: 100%;
+    }
+
     header h1{
         font-size: 25px;
+     
+        
     }
 
     .hero {
@@ -192,6 +199,7 @@ li {
     footer {
         font-size: 18px;
         text-align: center;
+        width: 100%;
     }
 }
 

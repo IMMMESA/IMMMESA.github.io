@@ -43,6 +43,7 @@ header h1 {
     margin-bottom: 10px;
     padding: 20px;
     /* border: 1px solid red; */
+    
 
 }
 
@@ -200,7 +201,7 @@ li {
     footer {
         font-size: 18px;
         text-align: center;
-        width: 100%;
+      
     }
 }
 

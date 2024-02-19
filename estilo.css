@@ -35,6 +35,14 @@ header h1 {
     width: 100%;
 }
 
+
+.hero2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
 .box-img {
     display: flex;
     justify-content: center;
@@ -88,7 +96,7 @@ header h1 {
 }
 
 .box-item {
-    width: 30%;
+    width: 24%;
     height: 380px;
     background: #f6d9f4;
     margin: 5px;
@@ -104,6 +112,7 @@ header h1 {
     flex-flow: row wrap;
     width: 80%;
     margin-left: 10%;
+	margin-bottom: 30px;
     /* border: 1px solid red; */
 }
 

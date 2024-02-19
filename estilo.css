@@ -210,6 +210,7 @@ li {
     footer {
         font-size: 18px;
         text-align: center;
+        max-width: 100%;
       
     }
 }

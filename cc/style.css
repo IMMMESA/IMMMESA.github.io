@@ -1,0 +1,618 @@
+:root{
+    /* Cores de Fundo Premium (Dark Mode) */
+    --bg-main: #0a0a0a;       /* Fundo principal super escuro */
+    --bg-card: #141414;       /* Fundo dos cards levemente mais claro */
+    --border-card: rgba(212, 175, 55, 0.12);
+    
+    /* Suas Variáveis Originais */
+    --gold:#d4af37;
+    --dark:#0f0f0f;
+    --white:#ffffff;
+    --gray:#aaa;              /* Ajustado para melhor contraste no escuro */
+    --light:#1a1a1a;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:'Montserrat', sans-serif;
+    background: var(--bg-main);
+    color: #eeeeee;           /* Texto claro para leitura confortável */
+    overflow-x:hidden;
+}
+
+img{
+    max-width:100%;
+    display:block;
+}
+
+/* SCROLL */
+
+::-webkit-scrollbar{
+    width:10px;
+}
+
+::-webkit-scrollbar-thumb{
+    background:var(--gold);
+    border-radius:20px;
+}
+
+/* HEADER */
+
+header{
+    width:100%;
+    position:fixed;
+    top:0;
+    left:0;
+    z-index:999;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:20px 8%;
+    transition:.4s;
+    backdrop-filter:blur(10px);
+}
+
+/* HEADER AO ROLAR OU MENU MOBILE ATIVO */
+header.rolagem,
+header.menu-aberto {
+    background:rgba(10, 10, 10, 0.95); /* Fundo escuro sutil ao rolar */
+    box-shadow:0 10px 30px rgba(0,0,0,.5);
+    border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+}
+
+/* LOGO */
+
+.logo h1{
+    color:#fff;
+    font-size:32px;
+    font-weight:800;
+    transition:.4s;
+}
+
+.logo span{
+    color:var(--gold);
+    font-size:12px;
+    letter-spacing:3px;
+    font-weight:600;
+}
+
+/* MENU */
+
+nav{
+    display:flex;
+    gap:35px;
+}
+
+/* MENU NORMAL */
+
+header nav a{
+    color:#fff;
+}
+
+header.rolagem nav a:hover,
+header.menu-aberto nav a:hover {
+    color:var(--gold) !important;
+}
+
+nav a{
+    text-decoration:none;
+    font-weight:600;
+    position:relative;
+    transition:.4s;
+}
+
+nav a::after{
+    content:'';
+    position:absolute;
+    width:0%;
+    height:2px;
+    background:var(--gold);
+    left:0;
+    bottom:-8px;
+    transition:.4s;
+}
+
+nav a:hover{
+    color:var(--gold);
+}
+
+nav a:hover::after{
+    width:100%;
+}
+
+/* MENU MOBILE */
+
+.menu-mobile{
+    display:none;
+    flex-direction:column;
+    gap:6px;
+    cursor:pointer;
+}
+
+.menu-mobile div{
+    width:32px;
+    height:3px;
+    background:#fff;
+    border-radius:20px;
+    transition:.4s;
+}
+
+/* HERO */
+
+.hero{
+    width:100%;
+    min-height:100vh;
+
+    background:
+    linear-gradient(rgba(0,0,0,.72),
+    rgba(0,0,0,.72)),
+    url('../img/igrejaCampos2.png')
+    center/cover no-repeat;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    color:#fff;
+    position:relative;
+    padding:120px 20px 80px;
+}
+
+.hero::before{
+    content:'';
+    position:absolute;
+    inset:0;
+
+    background:
+    radial-gradient(circle at top,
+    rgba(212,175,55,.25),
+    transparent 35%),
+
+    linear-gradient(to bottom,
+    rgba(0,0,0,.1),
+    rgba(0,0,0,.65));
+
+    animation: brilho 6s infinite alternate;
+    will-change: opacity; /* Otimização de performance */
+}
+
+@keyframes brilho{
+    from{
+        opacity:.7;
+    }
+    to{
+        opacity:1;
+    }
+}
+
+.hero-content{
+    position:relative;
+    z-index:2;
+    width:100%;
+    max-width:950px;
+}
+
+.tag{
+    background:rgba(212,175,55,.15);
+    border:1px solid rgba(212,175,55,.4);
+    color:var(--gold);
+    padding:12px 28px;
+    border-radius:50px;
+    font-weight:700;
+    display:inline-block;
+    backdrop-filter:blur(8px);
+}
+
+.hero h2{
+    font-size:75px;
+    margin-top:25px;
+    line-height:1.05;
+    font-weight:800;
+}
+
+.hero p{
+    margin-top:28px;
+    line-height:1.9;
+    color:#eee;
+    font-size:18px;
+    max-width:750px;
+    margin-inline:auto;
+}
+
+.hero-buttons{
+    margin-top:45px;
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    flex-wrap:wrap;
+}
+
+/* BOTÕES */
+
+.btn{
+    background:linear-gradient(135deg,#e5c158,#c79d1b);
+    color:#000;
+    padding:17px 38px;
+    border-radius:12px;
+    text-decoration:none;
+    font-weight:700;
+    transition:.4s;
+    box-shadow:0 10px 30px rgba(212,175,55,.35);
+
+    position:relative;
+    overflow:hidden;
+}
+
+.btn::before{
+    content:'';
+    position:absolute;
+    top:0;
+    left:-100%;
+    width:100%;
+    height:100%;
+
+    background:linear-gradient(
+        120deg,
+        transparent,
+        rgba(255,255,255,.5),
+        transparent
+    );
+
+    transition:.8s;
+}
+
+.btn:hover::before{
+    left:100%;
+}
+
+.btn:hover{
+    transform:translateY(-6px);
+    box-shadow:0 15px 35px rgba(212,175,55,.5);
+}
+
+.btn-outline{
+    border:2px solid rgba(255,255,255,.3);
+    color:#fff;
+    padding:17px 38px;
+    border-radius:12px;
+    text-decoration:none;
+    transition:.4s;
+    backdrop-filter:blur(6px);
+}
+
+.btn-outline:hover{
+    background:#fff;
+    color:#000;
+}
+
+/* SECTION */
+
+section{
+    padding:120px 8%;
+}
+
+.title{
+    text-align:center;
+    margin-bottom:70px;
+}
+
+.title span{
+    color:var(--gold);
+    font-weight:700;
+    letter-spacing:3px;
+}
+
+.title h2{
+    font-size:48px;
+    margin-top:12px;
+    font-weight:800;
+    color:#fff;
+}
+
+/* SOBRE */
+
+.sobre{
+    display:flex;
+    align-items:center;
+    gap:70px;
+    flex-wrap:wrap;
+}
+
+.sobre-img{
+    flex:1;
+    min-width:300px;
+}
+
+.sobre-img img{
+    border-radius:20px;
+    box-shadow:0 25px 50px rgba(0,0,0,.5);
+}
+
+.sobre-text{
+    flex:1;
+    min-width:300px;
+}
+
+.sobre-text h2{
+    font-size:42px;
+    margin-bottom:20px;
+    color:#fff;
+}
+
+.sobre-text p{
+    line-height:2;
+    color:#ccc;
+    margin-bottom:18px;
+}
+
+/* CARDS */
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:35px;
+}
+
+.card{
+    background: var(--bg-card);
+    padding:50px 35px;
+    border-radius:22px;
+    text-align:center;
+    transition:.5s;
+    box-shadow:0 15px 35px rgba(0,0,0,.3);
+    position:relative;
+    overflow:hidden;
+    border:1px solid var(--border-card);
+}
+
+.card::before{
+    content:'';
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:5px;
+    background:linear-gradient(to right,#d4af37,#f3d16d);
+}
+
+.card:hover{
+    transform:translateY(-12px);
+    box-shadow:0 20px 45px rgba(212,175,55,.15);
+    border-color:rgba(212,175,55,.4);
+}
+
+.card i{
+    font-size:50px;
+    color:var(--gold);
+    margin-bottom:25px;
+}
+
+.card h3{
+    font-size:30px;
+    color:#fff;
+}
+
+.card p{
+    margin-top:12px;
+    color:var(--gray);
+}
+
+.card strong{
+    display:block;
+    margin-top:22px;
+    color:var(--gold);
+    font-size:24px;
+}
+
+/* FRASE */
+
+.frase{
+    background:
+    linear-gradient(rgba(0,0,0,.78),
+    rgba(0,0,0,.78)),
+    url('../img/pastores.png')
+    center/cover fixed;
+
+    color:#fff;
+    text-align:center;
+}
+
+.frase h2{
+    font-size:48px;
+    line-height:1.6;
+    font-weight:700;
+}
+
+/* GALERIA */
+
+.galeria-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    gap:25px;
+}
+
+.galeria-grid img{
+    width:100%;
+    border-radius:20px;
+    transition:.5s;
+    cursor:pointer;
+    box-shadow:0 10px 25px rgba(0,0,0,.4);
+}
+
+.galeria-grid img:hover{
+    transform:scale(1.04);
+    box-shadow:0 20px 45px rgba(212,175,55,.15);
+}
+
+/* REDES */
+
+.social{
+    display:flex;
+    justify-content:center;
+    gap:25px;
+    flex-wrap:wrap;
+}
+
+.social a{
+    width:85px;
+    height:85px;
+    border-radius:50%;
+    background:#141414;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-decoration:none;
+    color:#fff;
+    font-size:30px;
+    box-shadow:0 10px 30px rgba(0,0,0,.4);
+    transition:.4s;
+    border: 1px solid rgba(255,255,255,0.05);
+}
+
+.social a:hover{
+    background:var(--gold);
+    color:#000;
+    transform:translateY(-10px) rotate(5deg);
+    border-color: transparent;
+}
+
+/* FOOTER */
+
+footer{
+    background:#050505;
+    text-align:center;
+    padding:45px 20px;
+    border-top:1px solid rgba(255,255,255,.05);
+}
+
+footer p{
+    color:#777;
+    letter-spacing:1px;
+}
+
+/* WHATSAPP */
+
+.whatsapp{
+    position:fixed;
+    right:25px;
+    bottom:25px;
+    width:68px;
+    height:68px;
+    border-radius:50%;
+    background:#25d366;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#fff;
+    font-size:32px;
+    text-decoration:none;
+    box-shadow:0 10px 30px rgba(0,0,0,.4);
+    z-index:999;
+    transition:.4s;
+}
+
+.whatsapp:hover{
+    transform:scale(1.1);
+}
+
+/* ANIMAÇÕES */
+
+.reveal{
+    opacity:0;
+    transform:translateY(60px);
+    transition:1s;
+}
+
+.reveal.active{
+    opacity:1;
+    transform:translateY(0);
+}
+
+/* RESPONSIVO */
+
+@media(max-width:980px){
+
+    nav{
+        position:absolute;
+        top:100%;
+        left:0;
+        width:100%;
+        background:#101010; /* Menu mobile escuro condizente com o tema */
+        flex-direction:column;
+        padding:30px;
+        display:none;
+        box-shadow:0 15px 30px rgba(0,0,0,.5);
+        border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+    }
+
+    nav.active{
+        display:flex;
+    }
+
+    nav a{
+        color:#fff !important;
+    }
+
+    .menu-mobile{
+        display:flex;
+    }
+
+    .hero h2{
+        font-size:50px;
+    }
+
+    .hero-buttons{
+        flex-direction:column;
+        align-items:center;
+    }
+
+    .btn,
+    .btn-outline{
+        width:100%;
+        max-width:320px;
+    }
+
+    .sobre{
+        flex-direction:column;
+    }
+
+    section{
+        padding:90px 5%;
+    }
+
+}
+
+@media(max-width:600px){
+
+    .hero h2{
+        font-size:38px;
+    }
+
+    .hero p{
+        font-size:15px;
+    }
+
+    .title h2{
+        font-size:34px;
+    }
+
+    .frase h2{
+        font-size:30px;
+    }
+
+    .social a{
+        width:70px;
+        height:70px;
+        font-size:26px;
+    }
+
+}

@@ -1,117 +1,881 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
+
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- AREA DE INSERÇÃO DO ICON DO TITLE -->
-    <link rel="shortcut icon" href="img/ieadam2.ico" type="image/x-icon">
-    <title>IEADAM-CAMPOS2</title>
-    <!-- FIM DA AREA DO ICON -->
-    <link rel="stylesheet" href="estilo.css">
+
+    <title>IEADAM - Campos Elíseos 2</title>
+
+    <meta name="description"
+        content="Assembleia de Deus IEADAM Campos Elíseos 2">
+
+    <!-- GOOGLE FONTS -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- FONT AWESOME -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- AOS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css"
+        rel="stylesheet">
+
+    <style>
+
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
+
+        html{
+            scroll-behavior:smooth;
+        }
+
+        body{
+            font-family:'Montserrat', sans-serif;
+            background:#f8f8f8;
+            color:#222;
+            overflow-x:hidden;
+        }
+
+        img{
+            max-width:100%;
+            display:block;
+        }
+
+        /* HEADER */
+
+        header{
+            width:100%;
+            position:fixed;
+            top:0;
+            left:0;
+            z-index:999;
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            padding:20px 8%;
+            transition:.4s;
+        }
+
+        header.rolagem{
+            background:#ffffff;
+            box-shadow:0 5px 20px rgba(0,0,0,.08);
+        }
+
+        .logo h1{
+            color:#fff;
+            font-size:30px;
+            font-weight:800;
+            transition:.4s;
+        }
+
+        .logo span{
+            color:#d4af37;
+            font-size:12px;
+            letter-spacing:2px;
+        }
+
+        header.rolagem .logo h1{
+            color:#111;
+        }
+
+        nav{
+            display:flex;
+            gap:30px;
+        }
+
+        nav a{
+            text-decoration:none;
+            color:#fff;
+            font-weight:600;
+            position:relative;
+            transition:.4s;
+        }
+
+        header.rolagem nav a{
+            color:#111;
+        }
+
+        nav a::after{
+            content:'';
+            position:absolute;
+            width:0%;
+            height:2px;
+            background:#d4af37;
+            left:0;
+            bottom:-6px;
+            transition:.4s;
+        }
+
+        nav a:hover::after{
+            width:100%;
+        }
+
+        /* MENU MOBILE */
+
+        .menu-mobile{
+            display:none;
+            flex-direction:column;
+            gap:5px;
+            cursor:pointer;
+        }
+
+        .menu-mobile div{
+            width:30px;
+            height:3px;
+            background:#fff;
+            border-radius:5px;
+            transition:.4s;
+        }
+
+        header.rolagem .menu-mobile div{
+            background:#111;
+        }
+
+        /* HERO */
+
+        .hero{
+            width:100%;
+            min-height:100vh;
+            background:
+            linear-gradient(rgba(0,0,0,.65),
+            rgba(0,0,0,.65)),
+            url('img/10Anos.jpg')
+            center/cover no-repeat;
+
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            text-align:center;
+            color:#fff;
+            position:relative;
+            padding:120px 20px 80px;
+        }
+
+        .hero-content{
+            width:100%;
+            max-width:900px;
+        }
+
+        .tag{
+            background:#d4af37;
+            color:#000;
+            padding:10px 25px;
+            border-radius:50px;
+            font-weight:700;
+            display:inline-block;
+        }
+
+        .hero h2{
+            font-size:70px;
+            margin-top:25px;
+            line-height:1.1;
+        }
+
+        .hero p{
+            margin-top:25px;
+            line-height:1.9;
+            color:#eee;
+            font-size:18px;
+        }
+
+        .hero-buttons{
+            margin-top:40px;
+            display:flex;
+            justify-content:center;
+            gap:20px;
+            flex-wrap:wrap;
+        }
+
+        .btn{
+            background:#d4af37;
+            color:#000;
+            padding:16px 35px;
+            border-radius:8px;
+            text-decoration:none;
+            font-weight:700;
+            transition:.4s;
+        }
+
+        .btn:hover{
+            transform:translateY(-5px);
+        }
+
+        .btn-outline{
+            border:2px solid #fff;
+            color:#fff;
+            padding:16px 35px;
+            border-radius:8px;
+            text-decoration:none;
+            transition:.4s;
+        }
+
+        .btn-outline:hover{
+            background:#fff;
+            color:#000;
+        }
+
+        /* SECTION */
+
+        section{
+            padding:110px 8%;
+        }
+
+        .title{
+            text-align:center;
+            margin-bottom:60px;
+        }
+
+        .title span{
+            color:#d4af37;
+            font-weight:700;
+            letter-spacing:2px;
+        }
+
+        .title h2{
+            font-size:45px;
+            margin-top:10px;
+        }
+
+        /* SOBRE */
+
+        .sobre{
+            display:flex;
+            align-items:center;
+            gap:60px;
+            flex-wrap:wrap;
+        }
+
+        .sobre-img{
+            flex:1;
+            min-width:300px;
+        }
+
+        .sobre-img img{
+            width:100%;
+            border-radius:15px;
+            box-shadow:0 15px 35px rgba(0,0,0,.12);
+        }
+
+        .sobre-text{
+            flex:1;
+            min-width:300px;
+        }
+
+        .sobre-text h2{
+            font-size:40px;
+            margin-bottom:20px;
+        }
+
+        .sobre-text p{
+            line-height:1.9;
+            color:#555;
+            margin-bottom:15px;
+        }
+
+        /* CULTOS */
+
+        .cards{
+            display:grid;
+            grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+            gap:30px;
+        }
+
+        .card{
+            background:#fff;
+            padding:45px 30px;
+            border-radius:15px;
+            text-align:center;
+            transition:.4s;
+            box-shadow:0 10px 25px rgba(0,0,0,.08);
+            border-top:5px solid #d4af37;
+        }
+
+        .card:hover{
+            transform:translateY(-10px);
+        }
+
+        .card i{
+            font-size:45px;
+            color:#d4af37;
+            margin-bottom:20px;
+        }
+
+        .card h3{
+            font-size:28px;
+        }
+
+        .card p{
+            margin-top:10px;
+            color:#666;
+        }
+
+        .card strong{
+            display:block;
+            margin-top:20px;
+            color:#d4af37;
+            font-size:22px;
+        }
+
+        /* FRASE */
+
+        .frase{
+            background:
+            linear-gradient(rgba(0,0,0,.75),
+            rgba(0,0,0,.75)),
+            url('img/pastores.png')
+            center/cover fixed;
+
+            color:#fff;
+            text-align:center;
+        }
+
+        .frase h2{
+            font-size:45px;
+            line-height:1.5;
+        }
+
+        /* GALERIA */
+
+        .galeria-grid{
+            display:grid;
+            grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+            gap:25px;
+        }
+
+        .galeria-grid img{
+            width:100%;
+            border-radius:15px;
+            transition:.4s;
+            cursor:pointer;
+        }
+
+        .galeria-grid img:hover{
+            transform:scale(1.03);
+        }
+
+        /* REDES */
+
+        .social{
+            display:flex;
+            justify-content:center;
+            gap:25px;
+            flex-wrap:wrap;
+        }
+
+        .social a{
+            width:80px;
+            height:80px;
+            border-radius:50%;
+            background:#fff;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            text-decoration:none;
+            color:#111;
+            font-size:28px;
+            box-shadow:0 10px 25px rgba(0,0,0,.08);
+            transition:.4s;
+        }
+
+        .social a:hover{
+            background:#d4af37;
+            transform:translateY(-10px);
+        }
+
+        /* FOOTER */
+
+        footer{
+            background:#111;
+            text-align:center;
+            padding:40px 20px;
+        }
+
+        footer p{
+            color:#aaa;
+        }
+
+        /* WHATSAPP */
+
+        .whatsapp{
+            position:fixed;
+            right:20px;
+            bottom:20px;
+            width:65px;
+            height:65px;
+            border-radius:50%;
+            background:#25d366;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            color:#fff;
+            font-size:30px;
+            text-decoration:none;
+            box-shadow:0 10px 25px rgba(0,0,0,.2);
+            z-index:999;
+        }
+
+        /* RESPONSIVIDADE */
+
+        @media(max-width:1200px){
+
+            .hero h2{
+                font-size:55px;
+            }
+
+        }
+
+        @media(max-width:980px){
+
+            nav{
+                position:absolute;
+                top:100%;
+                left:0;
+                width:100%;
+                background:#fff;
+                flex-direction:column;
+                padding:30px;
+                display:none;
+                box-shadow:0 10px 20px rgba(0,0,0,.08);
+            }
+
+            nav.active{
+                display:flex;
+            }
+
+            nav a{
+                color:#111 !important;
+            }
+
+            .menu-mobile{
+                display:flex;
+            }
+
+            .hero h2{
+                font-size:45px;
+            }
+
+            .hero p{
+                font-size:16px;
+            }
+
+            .hero-buttons{
+                flex-direction:column;
+                align-items:center;
+            }
+
+            .btn,
+            .btn-outline{
+                width:100%;
+                max-width:320px;
+            }
+
+            section{
+                padding:90px 5%;
+            }
+
+            .sobre{
+                flex-direction:column;
+            }
+
+            .sobre-text{
+                text-align:center;
+            }
+
+            .title h2{
+                font-size:38px;
+            }
+
+            .frase h2{
+                font-size:35px;
+            }
+
+        }
+
+        @media(max-width:600px){
+
+            header{
+                padding:15px 5%;
+            }
+
+            .logo h1{
+                font-size:24px;
+            }
+
+            .hero h2{
+                font-size:34px;
+            }
+
+            .hero p{
+                font-size:15px;
+                line-height:1.7;
+            }
+
+            .tag{
+                font-size:12px;
+                padding:8px 18px;
+            }
+
+            section{
+                padding:80px 20px;
+            }
+
+            .title h2{
+                font-size:30px;
+            }
+
+            .sobre-text h2{
+                font-size:28px;
+            }
+
+            .card{
+                padding:35px 20px;
+            }
+
+            .card h3{
+                font-size:24px;
+            }
+
+            .card strong{
+                font-size:20px;
+            }
+
+            .frase h2{
+                font-size:28px;
+            }
+
+            .social a{
+                width:65px;
+                height:65px;
+                font-size:24px;
+            }
+
+            footer p{
+                font-size:13px;
+                line-height:1.6;
+            }
+
+            .whatsapp{
+                width:55px;
+                height:55px;
+                font-size:24px;
+            }
+
+        }
+
+        @media(max-width:400px){
+
+            .hero h2{
+                font-size:28px;
+            }
+
+            .title h2{
+                font-size:26px;
+            }
+
+            .sobre-text h2{
+                font-size:24px;
+            }
+
+            .frase h2{
+                font-size:24px;
+            }
+
+        }
+
+    </style>
+
 </head>
+
 <body>
 
-    <!-- CABEÇALHO -->
-    <header>
-        <h1>Ieadam - Campos Elíeos 2</h1>
+    <!-- HEADER -->
+
+    <header id="header">
+
+        <div class="logo">
+
+            <h1>IEADAM</h1>
+
+            <span>CAMPOS ELÍSEOS 2</span>
+
+        </div>
+
+        <!-- MENU MOBILE -->
+
+        <div class="menu-mobile" id="menu-mobile">
+
+            <div></div>
+            <div></div>
+            <div></div>
+
+        </div>
+
+        <!-- MENU -->
+
+        <nav id="menu">
+
+            <a href="#inicio">Início</a>
+
+            <a href="#sobre">Sobre</a>
+
+            <a href="#cultos">Cultos</a>
+
+            <a href="#galeria">Galeria</a>
+
+            <a href="#redes">Redes</a>
+
+        </nav>
+
     </header>
 
-    <!-- PRIMEIRA SECTION HERO-->
-    <section class="hero">
-        <!-- DIV DA IMAGEM -->
-        <div class="box-img">
-            <img class="responsiva" id="pastor" src="img/10Anos.jpg">
-            
-			<img class="responsiva" id="pastor" src="img/pastores.png">
-        
-            
-        </div>
-        
-    </section>
-	<section class="hero2">
-	
-		<!-- DIV DA BOX DE TEXTO -->
-        <div class="box-txt">
-            <span>VENHA NOS VISITAR</span>
+    <!-- HERO -->
 
-            <h2>ASSEMBLEIA DE DEUS<br>CAMPOS ELÍSEOS 2</h2>
+    <section class="hero" id="inicio">
 
-            <P>PARTICIPE DE NOSSOS CULTOS<br>
-                VENHA NOS VISITAR.</P>
-            <br>
-            <p>Deus tem uma promessa em sua vida venha participar dos nossos cultos e receba o milagre de Deus em sua vida.</p>
-        </div>
-	</section>
+        <div class="hero-content">
 
-    <!-- SEGUNDA SECTION -BOX-ITEM -->
-    <section class="especialidades">
-        
-        <!-- DIV HORARIOS DE DOMINGO -->
-        <div class="box-item">
-            <h3>Domingo</h3>
-            <p>Culto de Celebração</p>
-            <br>
-            <p>18:00 ate 21:00</p>
-        </div>
+            <span class="tag">
+                Bem-vindo à Casa do Senhor
+            </span>
 
-        <!-- DIV HORARIOS DE TERÇA-FEIRA -->
-        <div class="box-item">
-            <h3>Terça-Feira</h3>
-            <p>Culto de Doutrina</p>
-            <br>
-            <p>19:30 ate 21:00</p>
-        </div>
+            <h2>
+                Assembleia de Deus
+                Campos Elíseos 2
+            </h2>
 
-        <!-- DIV HORARIOS DE SEXTA-FEIRA -->
-        <div class="box-item">
-            <h3>Sexta-Feira</h3>
-            <p>Hora Nona</p>
-            <br>
-            <p>15:00 ate 16:00</p>
+            <p>
+                Um lugar preparado por Deus para restaurar vidas,
+                fortalecer famílias e anunciar o evangelho de Cristo.
+            </p>
+
+            <div class="hero-buttons">
+
+                <a href="#cultos" class="btn">
+                    Horários dos Cultos
+                </a>
+
+                <a href="#sobre" class="btn-outline">
+                    Conhecer Igreja
+                </a>
+
+            </div>
+
         </div>
-		
-		 <!-- DIV ESCOLA BIBLICA - EBD -->
-        <div class="box-item">
-           <h3>Domingo</h3>
-           <img class="responsiva" id="pastor" src="img/EBD.jpg">
-        </div>
-		<h2 style="font-size: 20px;">MAPA DE LOCALIZAÇÃO DA IGREJA <img src="img/seta2.png" width="30" height="50"></h2>
-            <img src="img/localização Campos2.PNG" width="450px" alt="Localização Igreja IEADAM - Campos Elíseos 2">
-			
-        <h2>Visite Nossa Redes Sociais</h2>
 
     </section>
-    
-    <nav class="rede-social">
 
-       <ul>
-        <li>
-            <a href="https://www.facebook.com/CamposEliseos2?mibextid=ZbWKwL" target="_blank">
-                <img src="img/facebook.png" alt="facebook">
-            </a>
-        </li>
-        <li>
-            <a href="https://www.youtube.com/channel/UCYCvJRr8Il9ig_W1zeeryEg" target="_blank">
-                <img src="img/logo-youtube.png" alt="Youtube">
-            </a>
-        </li>
+    <!-- SOBRE -->
 
-        <li>
-            <a href="https://instagram.com/igreja_campos2?igshid=MzRlODBiNWFlZA==" target="_blank">
-                <img src="img/instagra.png" alt="Instagram">
-            </a>
-        </li>
+    <section class="sobre" id="sobre">
 
-       </ul>
-    </nav>
-     
+        <div class="sobre-img">
+
+            <img src="img/pastores.png"
+                alt="Pastores">
+
+        </div>
+
+        <div class="sobre-text">
+
+            <div class="title">
+
+                <span>SOBRE NÓS</span>
+
+                <h2>
+                    Uma igreja comprometida com a Palavra de Deus
+                </h2>
+
+            </div>
+
+            <p>
+                A IEADAM Campos Elíseos 2 tem como missão proclamar o evangelho
+                de Jesus Cristo, promovendo comunhão, discipulado e adoração.
+            </p>
+
+            <p>
+                Somos uma igreja acolhedora, fundamentada na Bíblia Sagrada
+                e guiada pelo Espírito Santo.
+            </p>
+
+        </div>
+
+    </section>
+
+    <!-- CULTOS -->
+
+    <section id="cultos">
+
+        <div class="title">
+
+            <span>PROGRAMAÇÕES</span>
+
+            <h2>Horários dos Cultos</h2>
+
+        </div>
+
+        <div class="cards">
+
+            <div class="card">
+
+                <i class="fas fa-church"></i>
+
+                <h3>Domingo</h3>
+
+                <p>Culto de Celebração</p>
+
+                <strong>18h às 21h</strong>
+
+            </div>
+
+            <div class="card">
+
+                <i class="fas fa-book-bible"></i>
+
+                <h3>Terça-feira</h3>
+
+                <p>Culto de Doutrina</p>
+
+                <strong>19h30 às 21h</strong>
+
+            </div>
+
+            <div class="card">
+
+                <i class="fas fa-praying-hands"></i>
+
+                <h3>Sexta-feira</h3>
+
+                <p>Hora Nona</p>
+
+                <strong>15h às 16h</strong>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- FRASE -->
+
+    <section class="frase">
+
+        <h2>
+            “Eu e a minha casa serviremos ao Senhor.”
+        </h2>
+
+    </section>
+
+    <!-- GALERIA -->
+
+    <section id="galeria">
+
+        <div class="title">
+
+            <span>GALERIA</span>
+
+            <h2>Nossa Igreja</h2>
+
+        </div>
+
+        <div class="galeria-grid">
+
+            <img src="img/10Anos.jpg"
+                alt="Evento">
+
+            <img src="img/pastores.png"
+                alt="Pastores">
+
+            <img src="img/EBD.jpg"
+                alt="Escola Bíblica">
+
+        </div>
+
+    </section>
+
+    <!-- REDES -->
+
+    <section id="redes">
+
+        <div class="title">
+
+            <span>ACOMPANHE</span>
+
+            <h2>Nossas Redes Sociais</h2>
+
+        </div>
+
+        <div class="social">
+
+            <a href="https://facebook.com" target="_blank">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+
+            <a href="https://youtube.com" target="_blank">
+                <i class="fab fa-youtube"></i>
+            </a>
+
+            <a href="https://instagram.com" target="_blank">
+                <i class="fab fa-instagram"></i>
+            </a>
+
+        </div>
+
+    </section>
+
+    <!-- FOOTER -->
+
     <footer>
-    <p>2023 <img src="img/copy.png" width="20"> IEADAM - Campos Elíseos 2. Todos Direitos reservados.</p>
-    </footer>
-    <div></div>
-    <script></script>
 
-    
+        <p>
+            © 2026 IEADAM - Campos Elíseos 2.
+            Todos os direitos reservados.
+        </p>
+
+    </footer>
+
+    <!-- WHATSAPP -->
+
+    <a href="https://wa.me/559299999999"
+        class="whatsapp"
+        target="_blank">
+
+        <i class="fab fa-whatsapp"></i>
+
+    </a>
+
+    <!-- JAVASCRIPT -->
+
+    <script>
+
+        // HEADER ROLAGEM
+
+        window.addEventListener('scroll', () => {
+
+            const header = document.getElementById('header');
+
+            header.classList.toggle('rolagem', window.scrollY > 50);
+
+        });
+
+        // MENU MOBILE
+
+        const menuMobile = document.getElementById('menu-mobile');
+        const menu = document.getElementById('menu');
+
+        menuMobile.addEventListener('click', () => {
+
+            menu.classList.toggle('active');
+
+        });
+
+    </script>
 
 </body>
+
 </html>
